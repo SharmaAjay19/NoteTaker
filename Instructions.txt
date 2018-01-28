@@ -9,7 +9,8 @@ pip install --upgrade pocketsphinx
 
 OR
 
-If you encounter build errors, use the .whl binary present in the repo.
+If you encounter build errors, use the .whl binary by downloading from here:
+https://www.lfd.uci.edu/~gohlke/pythonlibs/#pocketsphinx
 
 
 Install pyttsx from here:
