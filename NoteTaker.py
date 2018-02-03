@@ -2,9 +2,10 @@ import speech_recognition as sr
 import pyttsx, sys
 import time
 import json
+config = json.load(open('config.json', 'r'))
 engine = pyttsx.init()
 engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_ZIRA_11.0') #The voice id can be replaced according to instructions in Instructions.txt
-BING_KEY = "BING_KEY_TO_BE_OBTAINED_BY_REGISTERING_AN_APP"
+BING_KEY = config["BING_API_KEY"]
 
 stopphrases = ["Stop.", "stop.", "stop", "Stop"]
 yesphrases = ["Yes.", "Yes", "yes.", "yes"]
@@ -23,7 +24,7 @@ class NoteTaker:
         self.recognizer = sr.Recognizer()
         self.timeout = 2
     def ToFile(self, filename=None):
-        text = json.dumps(self.notes)
+        text = json.dumps(self.notes, indent=4)
         if filename is None:
             filename = self.title + '.json'
         with open(filename, 'w') as f:
