@@ -1,0 +1,8 @@
+{
+	"traindata": {
+		"stopphrases" : ["Stop"],
+		"yesphrases" : ["Yes", "Yeah", "Yup", "Yo"],
+		"nophrases" : ["No", "Nope", "Nah"],
+		"startphrases" : ["Start", "Hey", "Hello", "Hi"]
+	}
+}

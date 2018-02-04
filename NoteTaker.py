@@ -3,14 +3,21 @@ import pyttsx, sys
 import time
 import json
 config = json.load(open('config.json', 'r'))
+dictionary = json.load(open('dictionary.json', 'r'))
 engine = pyttsx.init()
 engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_ZIRA_11.0') #The voice id can be replaced according to instructions in Instructions.txt
 BING_KEY = config["BING_API_KEY"]
 
-stopphrases = ["Stop.", "stop.", "stop", "Stop"]
-yesphrases = ["Yes.", "Yes", "yes.", "yes"]
-nophrases = ["No.", "No", "no.", "no"]
-startphrases = ["Start.", "Start", "start.", "start"]
+def processDictionary(litems):
+    res = []
+    for item in litems:
+        res = res + [item, item+'.', item.lower(), item.lower() + '.']
+    return res
+
+stopphrases = processDictionary(dictionary['traindata']['stopphrases'])
+yesphrases = processDictionary(dictionary['traindata']['yesphrases'])
+nophrases = processDictionary(dictionary['traindata']['nophrases'])
+startphrases = processDictionary(dictionary['traindata']['startphrases'])
 
 def speak(text):
     engine.say(text)
