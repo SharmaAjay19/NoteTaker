@@ -1,1 +1,3 @@
 # NoteTaker
+
+[Instructions](Instructions.txt)
